@@ -7,6 +7,8 @@ Built for the **Redrob India.Runs Data & AI Challenge**, this system parses job 
 
 ## 🗺️ System Architecture
 
+![System Architecture Diagram](redrob_system_architecture.png)
+
 The engine uses a highly optimized **two-stage retrieval and reranking architecture** designed to run within strict computing and memory constraints (CPU-only, ≤16GB RAM, ≤5 minutes runtime).
 
 ```mermaid
