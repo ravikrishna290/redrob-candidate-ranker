@@ -21,5 +21,8 @@ COPY preprocess/ ./preprocess/
 COPY ranker/ ./ranker/
 COPY scratch/ ./scratch/
 
+# Pre-download model weights so they are cached inside the container for offline usage
+RUN python scratch/download_models.py
+
 # Default command (can be overridden during docker run)
 ENTRYPOINT ["python", "main.py"]

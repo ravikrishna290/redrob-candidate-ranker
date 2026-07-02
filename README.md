@@ -33,7 +33,7 @@ flowchart TD
 
 ### 1. Two-Stage Retrieval
 * **Stage 1 (Bi-Encoder Filtering)**: Matches query intent against precomputed candidate embeddings generated using `BAAI/bge-small-en-v1.5`. Runs in **0.05 seconds**.
-* **Stage 2 (Cross-Encoder Reranking)**: Reranks the top 500 candidate candidates using `cross-encoder/ms-marco-MiniLM-L-6-v2` to capture deep semantic interactions. Runs in **13.6 seconds**.
+* **Stage 2 (Cross-Encoder Reranking)**: Reranks the top 300 candidates using `cross-encoder/ms-marco-MiniLM-L-6-v2` to capture deep semantic interactions. Runs in **12.7 seconds**.
 
 ### 2. Recruiter-Style Hybrid Scoring (Weights)
 * **35% Semantic Fit**: Dense embedding similarity.
@@ -65,11 +65,14 @@ To secure manual evaluation points (Stage 4), the engine generates highly person
 │   ├── extract_features.py     # Stability, growth, and behavioral extraction
 │   └── build_embeddings.py     # Multi-threaded offline embedding pipeline
 ├── ranker/
-│   ├── jd_parser.py            # Job description XML parser
-│   ├── scoring.py              # Hybrid scoring math (Skills, Stability, Behavioral)
-│   ├── trap_detector.py        # Strict honeypot and anomaly check
-│   ├── reasoning.py            # Recruiter justification generator
-│   └── reranker.py             # Cross-Encoder predictions
+│   ├── jd_parser.py            # Job description parsing logic
+│   ├── semantic_match.py       # Bi-Encoder semantic query similarity
+│   ├── skill_match.py          # Skill overlap and synonym expansion scoring
+│   ├── behavior_match.py       # Experience, location, salary behavioral scoring
+│   ├── trap_detector.py        # Multi-point honeypot anomaly detector
+│   ├── hybrid_score.py         # Multi-factor score fusion
+│   ├── reranker.py             # Cross-Encoder reranking
+│   └── explain.py              # Dynamic recruiter-style reasoning generator
 ├── main.py                     # Main orchestrator
 ├── Dockerfile                  # Sandbox environment definition
 ├── requirements.txt            # Project dependencies

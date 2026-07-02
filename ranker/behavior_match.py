@@ -1,4 +1,4 @@
-def calculate_behavior_fit(cand_features, parsed_jd, raw_signals):
+def calculate_behavior_fit(cand_features, parsed_jd, raw_cand):
     """
     Computes experience fit, location fit, salary fit, and returns a combined score.
     """
@@ -23,9 +23,12 @@ def calculate_behavior_fit(cand_features, parsed_jd, raw_signals):
         score -= min(0.2, (exp_years - max_exp) * 0.02)
         
     # 2. Location & Work Mode Fit
+    raw_signals = raw_cand.get("redrob_signals", {})
+    profile = raw_cand.get("profile", {})
+    
     preferred_locs = parsed_jd.get("target_locations", [])
-    cand_location = raw_signals.get("location", "").lower()
-    cand_country = raw_signals.get("country", "").lower()
+    cand_location = profile.get("location", "").lower()
+    cand_country = profile.get("country", "").lower()
     
     # Check if candidate is in India
     in_india = cand_country == "india" or any(loc in cand_location for loc in ["india", "bangalore", "bengaluru", "pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "chennai"])

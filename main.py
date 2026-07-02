@@ -127,7 +127,7 @@ def main():
         skill_score = calculate_skill_match_score(raw_cand.get("skills", []), parsed_jd)
         
         # Calculate behavior fit
-        behavior_score = calculate_behavior_fit(feat, parsed_jd, raw_cand.get("redrob_signals", {}))
+        behavior_score = calculate_behavior_fit(feat, parsed_jd, raw_cand)
         
         # Get semantic score
         sem_score = float(semantic_scores[idx])
@@ -152,8 +152,8 @@ def main():
         key=lambda x: (-x["hybrid_score"], x["candidate_id"])
     )
     
-    top_k_candidates = scored_candidates[:500]
-    print(f"Selected top 500 candidates for CrossEncoder reranking.")
+    top_k_candidates = scored_candidates[:300]
+    print(f"Selected top 300 candidates for CrossEncoder reranking.")
     
     # 7. CrossEncoder Reranking
     from sentence_transformers import CrossEncoder
@@ -172,7 +172,7 @@ def main():
         raw_cand = c["raw_cand"]
         feat = c["feat"]
         
-        reasoning = generate_reasoning(raw_cand, feat, parsed_jd)
+        reasoning = generate_reasoning(raw_cand, feat, parsed_jd, rank=rank)
         
         output_rows.append({
             "candidate_id": cid,
