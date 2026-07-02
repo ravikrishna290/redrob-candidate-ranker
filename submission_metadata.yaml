@@ -4,26 +4,35 @@
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "your-team-name-here"  # Used in leaderboard and announcements
+team_name: "Innobytes"  # Used in leaderboard and announcements
 primary_contact:
-  name: "Full Name"
-  email: "primary@example.com"   # Used for all organizer communication
-  phone: "+91-XXXXXXXXXX"        # Used for top-50 / top-10 outreach
+  name: "Ravikrishna M"
+  email: "raviiit23@gmail.com"   # Primary contact email
+  phone: "+91-8015323371"        # Contact phone for top-50 / top-10 outreach
 
 team_members:
-  - name: "Full Name"
-    email: "primary@example.com"
-    role: "ML Engineer"
+  - name: "Ravikrishna M"
+    email: "raviiit23@gmail.com"
+    role: "Team Lead & ML Engineer"
+  - name: "RAMANI S"
+    email: "sec23cs097@sairamtap.edu.in"
+    role: "AI/ML Engineer"
+  - name: "SANJAY AJ"
+    email: "sec23cs046@sairamtap.edu.in"
+    role: "Full Stack AI Developer"
+  - name: "DHARSHINI Y"
+    email: "dharsweety2006@gmail.com"
+    role: "Data Analyst"
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
-github_repo: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+github_repo: "https://github.com/ravikrishna290/redrob-candidate-ranker"
 # Required. Set repo to public, or invite organizers at Stage 3.
-sandbox_link: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+sandbox_link: "https://github.com/ravikrishna290/redrob-candidate-ranker"
 # Using the Dockerfile recipe provided in the README.md
 
-reproduce_command: "python main.py --jd job_description.docx --candidates candidates.jsonl --output team_redrob.csv"
+reproduce_command: "python main.py --jd job_description.docx --candidates candidates.jsonl --output team_Innobytes.csv"
 # The single command that produces the final submission.
 
 # ============================================================================
